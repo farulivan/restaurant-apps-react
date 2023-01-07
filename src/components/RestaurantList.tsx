@@ -1,16 +1,10 @@
 // import CONFIG from '../globals/config';
 import { useEffect, useState } from 'react';
+import { Restaurant } from '../types/restaurants.type';
 import RestaurantsSource from '../data/resturants-source';
 import CONFIG from '../globals/config';
-
-export type Restaurant = {
-  id: string;
-  name: string;
-  description: string;
-  pictureId: string;
-  city: string;
-  rating: number;
-};
+import { StarIcon } from '../assets/icons/icons';
+import { NavLink } from 'react-router-dom';
 
 function RestaurantList() {
   const [restaurants, setRestaurants] = useState<Restaurant[] | null>(null);
@@ -27,15 +21,19 @@ function RestaurantList() {
   }, [restaurants]);
 
   return (
-    <div>
+    <section className="restaurant">
+      <h3 className="restaurant__label font-semibold text-base">
+        Explore Restaurants
+      </h3>
       {restaurants
         ? restaurants.map(
             ({ id, name, pictureId, city, description, rating }) => {
               return (
-                <a
+                <NavLink
                   className="restaurant__item flex p-4 mt-4 rounded-xl bg-white cursor-pointer text-fontPrimary shadow-md shadow-zinc-500 hover:bg-slate-300"
+                  key={id}
                   id={id}
-                  href="/#/detail/${id}"
+                  to={`/detail/${id}`}
                 >
                   <div className="restaurant__image w-1/3">
                     <img
@@ -45,19 +43,27 @@ function RestaurantList() {
                     />
                   </div>
                   <div className="restaurant__info pl-3 w-2/3">
-                    <p className="restaurant__name text-base font-semibold">{name}</p>
-                    <p className="restaurant__city text-fontSecondary font-normal">{city}</p>
-                    <p className="restaurant__description text-fontSecondary mt-3 text-sm w-full line-clamp-4">{description}</p>
-                    <p className="restaurant__rating mt-3 font-light">
-                      ⭐ <span className="text-base font-semibold">{rating}</span>/5
+                    <p className="restaurant__name text-base font-semibold">
+                      {name}
                     </p>
+                    <p className="restaurant__city text-fontSecondary font-normal">
+                      {city}
+                    </p>
+                    <p className="restaurant__description text-fontSecondary mt-3 text-sm w-full line-clamp-4">
+                      {description}
+                    </p>
+                    <div className="restaurant__rating mt-3 font-light flex items-center gap-1">
+                      <StarIcon />
+                      <span className="text-base font-semibold">{rating}</span>
+                      /5
+                    </div>
                   </div>
-                </a>
+                </NavLink>
               );
             }
           )
         : null}
-    </div>
+    </section>
   );
 }
 

@@ -21,8 +21,8 @@ module.exports = {
         skeleton2: 'hsl(200, 20%, 95%)',
       },
       backgroundImage: {
-        'hero-small': "url('/public/images/heros/hero-image-small.jpg')",
-        'hero-large': "url('/public/images/heros/hero-image.jpg')",
+        'hero-small': "url('/images/heros/hero-image-small.jpg')",
+        'hero-large': "url('/images/heros/hero-image.jpg')",
       }
     },
   },
