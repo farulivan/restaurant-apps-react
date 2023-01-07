@@ -19,15 +19,21 @@ class RestaurantsSource {
     }
   }
 
-  // static async detailRestaurant(id: string) {
-  //   try {
-  //     const response = await axios.get(API_ENDPOINT.DETAIL(id));
-  //     return response.data.restaurant;
-  //   } catch (error) {
-  //     console.error(error.message);
-  //     throw error;
-  //   }
-  // }
+  static async detailRestaurant(id: string) {
+    try {
+      const response = await axios.get(API_ENDPOINT.DETAIL(id));
+      return response.data.restaurant;
+    } catch (error: unknown) {
+      if (axios.isAxiosError(error)) {
+        console.error('Axios Error');
+      } else if (error instanceof Error) {
+        console.error('Error Fetching Data');
+      } else {
+        console.error('Unknown Error');
+      }
+      throw error;
+    }
+  }
 
   // static async searchRestaurants(query: string) {
   //   try {
