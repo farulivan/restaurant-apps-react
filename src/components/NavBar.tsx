@@ -42,8 +42,9 @@ function NavBar(): JSX.Element {
             <li className="nav__item w-full box-border list-item border-b-2 border-slate-300 py-5 px-5 hover: text-primary">
               <NavLink
                 to="/"
-                className="leading-7 py-4 px-4 uppercase "
+                className={({isActive}) => isActive ? "leading-7 py-4 px-4 uppercase font-bold" : "leading-7 py-4 px-4 uppercase  text-fontPrimary"}
                 aria-label="Navigate to Home page"
+                onClick={(): void => setNavBarOpen((prev) => !prev)}
               >
                 Home
               </NavLink>
@@ -51,7 +52,7 @@ function NavBar(): JSX.Element {
             <li className="nav__item w-full box-border list-item leading-7 py-5 px-5 uppercase border-b-2 border-slate-300 hover: text-primary">
               <a
                 href="/#/favorite"
-                className="leading-7 py-4 px-4 uppercase"
+                className="leading-7 py-4 px-4 uppercase text-fontPrimary"
                 aria-label="Navigate to Favorite page"
               >
                 Favorite
@@ -61,7 +62,7 @@ function NavBar(): JSX.Element {
               <a
                 href="https://www.linkedin.com/in/farulivan/"
                 target="_blank"
-                className="leading-7 py-4 px-4 uppercase"
+                className="leading-7 py-4 px-4 uppercase text-fontPrimary"
                 aria-label="Navigate to About Us page"
                 rel="noreferrer"
               >

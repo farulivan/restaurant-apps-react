@@ -4,10 +4,9 @@ const CustomerReviews: React.FC<{
   review: string;
   name: string;
   date: string;
-  index: number;
-}> = ({ review, name, date, index }) => {
+}> = ({ review, name, date }) => {
   return (
-    <div key={index} className="review-container flex items-center gap-3 w-full">
+    <div className="review-container flex items-center gap-3 w-full">
       <div className="min-w-[15%] max-w-[15%] object-contain">
         <UserPlaceholderIcon />
       </div>

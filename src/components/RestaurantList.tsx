@@ -1,10 +1,9 @@
-// import CONFIG from '../globals/config';
 import { useEffect, useState } from 'react';
 import { Restaurant } from '../types/restaurants.type';
 import RestaurantsSource from '../data/resturants-source';
 import CONFIG from '../globals/config';
 import { StarIcon } from '../assets/icons/icons';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function RestaurantList() {
   const [restaurants, setRestaurants] = useState<Restaurant[] | null>(null);
@@ -29,7 +28,7 @@ function RestaurantList() {
         ? restaurants.map(
             ({ id, name, pictureId, city, description, rating }) => {
               return (
-                <NavLink
+                <Link
                   className="restaurant__item flex p-4 mt-4 rounded-xl bg-white cursor-pointer text-fontPrimary shadow-md shadow-zinc-500 hover:bg-slate-300"
                   key={id}
                   id={id}
@@ -58,7 +57,7 @@ function RestaurantList() {
                       /5
                     </div>
                   </div>
-                </NavLink>
+                </Link>
               );
             }
           )

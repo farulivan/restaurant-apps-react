@@ -1,9 +1,8 @@
-const Menu: React.FC<{ name: string; index: number }> = ({
+const Menu: React.FC<{ name: string }> = ({
   name,
-  index,
 }) => {
   return (
-    <li className="list-inside list-disc" key={index}>{name}</li>
+    <li className="list-inside list-disc">{name}</li>
   );
 };
 

@@ -3,7 +3,7 @@ import NavBar from './NavBar';
 const Header = () => {
   return (
     <>
-      <a href="#mainContent" className="skip-link hidden" role="button">
+      <a href="#mainContent" className="skip-link absolute top-[-100px] left-0 bg-white text-primary p-2 z-50 font-bold border-fontSecondary border-2 focus:top-0" role="button">
         Skip to Content
       </a>
       <header className="header p-7 w-full bg-primary text-white rounded-b-3xl shadow-md shadow-zinc-500">

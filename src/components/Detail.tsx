@@ -1,5 +1,6 @@
+import { nanoid } from 'nanoid';
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import {
   BackArrowIcon,
   HeartIcon,
@@ -101,9 +102,9 @@ const Detail = () => {
           id="detailInfo"
           className="detail__info my-[-4rem] mx-[-2.5rem] px-12 py-1 bg-white text-fontPrimary relative"
         >
-          <button className="back-button absolute top-10 left-7 h-[45px] w-[45px] z-20 bg-primary border-0 rounded-full text-white font-bold flex items-center justify-center">
+          <Link to="/" className="back-button absolute top-10 left-7 h-[45px] w-[45px] z-20 bg-primary border-0 rounded-full text-white font-bold flex items-center justify-center">
             <BackArrowIcon />
-          </button>
+          </Link>
           <button className="back-button absolute top-10 right-7 h-[45px] w-[45px] z-20 bg-primary border-0 rounded-full text-white font-bold flex items-center justify-center">
             <HeartIcon />
           </button>
@@ -122,8 +123,8 @@ const Detail = () => {
                 <StoreIcon />
               </div>
               <ul className="flex">
-                {categories.map((category, index) => (
-                  <Category name={category.name} index={index} />
+                {categories.map(category => (
+                  <Category name={category.name} key={nanoid()} />
                 ))}
               </ul>
             </div>
@@ -135,12 +136,12 @@ const Detail = () => {
           <div className="detail__reviews py-8 border-t-secondary border-t-2">
             <h5 className="mb-2 text-base font-semibold">Reviews</h5>
             <div className="flex flex-col gap-4">
-              {customerReviews.map((review, index) => (
+              {customerReviews.map((review) => (
                 <CustomerReviews
                   review={review.review}
                   name={review.name}
                   date={review.date}
-                  index={index}
+                  key={nanoid()}
                 />
               ))}
             </div>
@@ -154,16 +155,16 @@ const Detail = () => {
           <div className="detail__foods py-8 border-t-secondary border-t-2">
             <h5 className="mb-2 text-base font-semibold">Food Menu</h5>
             <ul className="ml-2">
-              {menus.foods.map((food, index) => (
-                <Menu name={food.name} index={index} />
+              {menus.foods.map((food) => (
+                <Menu name={food.name} key={nanoid()} />
               ))}
             </ul>
           </div>
           <div className="detail__drinks py-8 border-t-secondary border-t-2 mb-8">
             <h5 className="mb-2 text-base font-semibold">Drink Menu</h5>
             <ul className="ml-2">
-              {menus.drinks.map((food, index) => (
-                <Menu name={food.name} index={index} />
+              {menus.drinks.map((food) => (
+                <Menu name={food.name} key={nanoid()} />
               ))}
             </ul>
           </div>

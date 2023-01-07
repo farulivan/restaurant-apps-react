@@ -27,7 +27,7 @@ const AddReview = () => {
           required
         ></textarea>
       </div>
-      <button className="add-review-button mt-4 py-2 px-4 bg-primary text-white rounded-lg border-none" type="submit">
+      <button className="add-review-button mt-4 py-4 px-5 bg-primary text-white rounded-lg border-none" type="submit">
         Add Review
       </button>
     </form>
