@@ -1,6 +1,3 @@
-# restaurant-apps-react
-Remake version (using ReactJS) of Final Project for Frontend Developer Expert Dicoding Academy (Indosat Ooreedoo Hutchison Digital Bootcamp)
-
 # Restaurant App (React)
 This is 'FindResto' where you can find the list of restaurants, look at the detail of every restaurant including, description, address, customer ratings and menu. This is the remake version (using ReactJS) of Final Project for Frontend Developer Expert Dicoding Academy (Indosat Ooreedoo Hutchison Digital Bootcamp).
 
