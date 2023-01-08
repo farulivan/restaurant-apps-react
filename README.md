@@ -14,7 +14,7 @@ This is 'FindResto' where you can find the list of restaurants, look at the deta
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/107041835/211182163-9a1db09e-33fd-40fc-8140-a6afbaf6c7c0.jpg" width="300px"/>
-  <br />=
+  <br />
   Loading State
 </p>
 
