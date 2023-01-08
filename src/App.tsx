@@ -10,7 +10,7 @@ function App(): JSX.Element {
     <BrowserRouter>
       <div className='root-container text-xs text-fontPrimary bg-secondary min-h-screen max-h-full flex flex-col justify-between items-center'>
         <Header />
-        <main id="mainContent" className="main p-7" tabIndex={0}>
+        <main id="mainContent" className="main p-7 w-full" tabIndex={0}>
           <Routes>
             <Route path="/" element={<RestaurantList />} />
             <Route path="detail/:id" element={<Detail />} />

@@ -1,6 +1,7 @@
 import { nanoid } from 'nanoid';
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import { SpinningWheel } from '../assets/icons/animation';
 import {
   BackArrowIcon,
   HeartIcon,
@@ -55,7 +56,6 @@ const Detail = () => {
 
   const [restaurantDetail, setRestaurantDetail] =
     useState<RestaurantDetail | null>(null);
-  // const [isLoading, setIsLoading] = useState(true);
   // const [isError, setIsError] = useState(false);
   const getRestaurantDetail: () => Promise<void> = async () => {
     if (typeof id === 'string') {
@@ -102,7 +102,10 @@ const Detail = () => {
           id="detailInfo"
           className="detail__info my-[-4rem] mx-[-2.5rem] px-12 py-1 bg-white text-fontPrimary relative"
         >
-          <Link to="/" className="back-button absolute top-10 left-7 h-[45px] w-[45px] z-20 bg-primary border-0 rounded-full text-white font-bold flex items-center justify-center">
+          <Link
+            to="/"
+            className="back-button absolute top-10 left-7 h-[45px] w-[45px] z-20 bg-primary border-0 rounded-full text-white font-bold flex items-center justify-center"
+          >
             <BackArrowIcon />
           </Link>
           <button className="back-button absolute top-10 right-7 h-[45px] w-[45px] z-20 bg-primary border-0 rounded-full text-white font-bold flex items-center justify-center">
@@ -136,7 +139,7 @@ const Detail = () => {
           <div className="detail__reviews py-8 border-t-secondary border-t-2">
             <h5 className="mb-2 text-base font-semibold">Reviews</h5>
             <div className="flex flex-col gap-4">
-              {customerReviews.map((review) => (
+              {customerReviews.map(review => (
                 <CustomerReviews
                   review={review.review}
                   name={review.name}
@@ -155,7 +158,7 @@ const Detail = () => {
           <div className="detail__foods py-8 border-t-secondary border-t-2">
             <h5 className="mb-2 text-base font-semibold">Food Menu</h5>
             <ul className="ml-2">
-              {menus.foods.map((food) => (
+              {menus.foods.map(food => (
                 <Menu name={food.name} key={nanoid()} />
               ))}
             </ul>
@@ -163,7 +166,7 @@ const Detail = () => {
           <div className="detail__drinks py-8 border-t-secondary border-t-2 mb-8">
             <h5 className="mb-2 text-base font-semibold">Drink Menu</h5>
             <ul className="ml-2">
-              {menus.drinks.map((food) => (
+              {menus.drinks.map(food => (
                 <Menu name={food.name} key={nanoid()} />
               ))}
             </ul>
@@ -172,7 +175,12 @@ const Detail = () => {
       </div>
     );
   } else {
-    return <div>Data not found</div>;
+    return (
+      <div role="status" className='flex justify-center items-center'>
+        <SpinningWheel />
+        <span className="sr-only">Loading...</span>
+      </div>
+    );
   }
 };
 

@@ -5,9 +5,11 @@ import CONFIG from '../globals/config';
 import { StarIcon } from '../assets/icons/icons';
 import { Link } from 'react-router-dom';
 
+import { SpinningWheel } from '../assets/icons/animation';
+
 function RestaurantList() {
   const [restaurants, setRestaurants] = useState<Restaurant[] | null>(null);
-  // const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
   // const [isError, setIsError] = useState(false);
   const getRestaurants: () => Promise<void> = async () => {
     await RestaurantsSource.restaurantsList().then(listRestaurant =>
@@ -17,12 +19,22 @@ function RestaurantList() {
 
   useEffect(() => {
     getRestaurants();
+
+    if (restaurants) {
+      setIsLoading(false);
+    }
   }, [restaurants]);
 
   return (
-    <section className="restaurant">
+    <section
+      className={
+        isLoading
+          ? 'restaurant w-full flex flex-col justify-center items-center'
+          : 'restaurant w-full'
+      }
+    >
       <h3 className="restaurant__label font-semibold text-base">
-        Explore Restaurants
+        {isLoading ? <SpinningWheel /> : 'Explore Restaurants'}
       </h3>
       {restaurants
         ? restaurants.map(
