@@ -48,7 +48,7 @@ function RestaurantList() {
                 >
                   <div className="restaurant__image w-1/3">
                     <img
-                      className="lazyload w-full h-full object-cover bg-skeleton1 rounded-md"
+                      className="lazyload w-full h-full object-cover bg-darkPlaceholder rounded-md"
                       src={`${CONFIG.BASE_IMAGE_URL}small/${pictureId}`}
                       alt={`picture of ${name}`}
                     />

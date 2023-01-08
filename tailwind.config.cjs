@@ -17,8 +17,8 @@ module.exports = {
         fontPrimary: '#0d2432',
         fontSecondary: '#37526d',
         heart: '#ea8181',
-        skeleton1: 'hsl(200, 20%, 80%)',
-        skeleton2: 'hsl(200, 20%, 95%)',
+        darkPlaceholder: 'hsl(200, 20%, 80%)',
+        lightPlaceholder: 'hsl(200, 20%, 95%)',
       },
       backgroundImage: {
         'hero-small': "url('/images/heros/hero-image-small.jpg')",

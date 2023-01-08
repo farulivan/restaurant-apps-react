@@ -89,7 +89,7 @@ const Detail = () => {
       <div className="detail" id={id}>
         <div className="detail__head flex flex-wrap justify-center items-center relative text-white z-10 px-2 h-[200px] w-auto">
           <img
-            className="detail__image lazyload w-full h-full object-cover rounded-2xl brightness-[30%] saturate-50 contrast-75 "
+            className="detail__image lazyload w-full h-full object-cover rounded-2xl brightness-[30%] saturate-50 contrast-75 bg-darkPlaceholder"
             src={`https://restaurant-api.dicoding.dev/images/medium/${pictureId}`}
             alt={`image of ${name}`}
           />
