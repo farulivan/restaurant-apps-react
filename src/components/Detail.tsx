@@ -3,12 +3,14 @@ import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { SpinningWheel } from '../assets/icons/animation';
 import {
+  AddFavoriteIcon,
   BackArrowIcon,
-  HeartIcon,
   PointLocationIcon,
+  RemoveFavoriteIcon,
   StoreIcon,
 } from '../assets/icons/icons';
 import RestaurantsSource from '../data/resturants-source';
+import { Restaurant } from '../types/restaurants.type';
 import AddReview from './details/AddReview';
 import Category from './details/Category';
 import CustomerReviews from './details/CustomerReviews';
@@ -51,11 +53,18 @@ export type CustomerReviews = {
   date: string;
 };
 
-const Detail = () => {
+const Detail: React.FC<{
+  addFavorite: (restaurant: Restaurant) => void;
+  removeFavorite: (id: string) => void;
+  checkFavorite: (id: string) => boolean;
+}> = ({ addFavorite, removeFavorite, checkFavorite }) => {
   const { id } = useParams<{ id: string }>();
 
   const [restaurantDetail, setRestaurantDetail] =
     useState<RestaurantDetail | null>(null);
+
+  const [isFavorite, setIsFavorite] = useState(false);
+
   // const [isError, setIsError] = useState(false);
   const getRestaurantDetail: () => Promise<void> = async () => {
     if (typeof id === 'string') {
@@ -64,6 +73,29 @@ const Detail = () => {
       );
     } else {
       console.error('id not found');
+    }
+  };
+
+  const addFavoriteHandler = () => {
+    if (restaurantDetail) {
+      const favorite = {
+        id: restaurantDetail.id,
+        name: restaurantDetail.name,
+        city: restaurantDetail.city,
+        description: restaurantDetail.description,
+        pictureId: restaurantDetail.pictureId,
+        rating: restaurantDetail.rating,
+      };
+
+      addFavorite(favorite);
+      setIsFavorite(true);
+    }
+  };
+
+  const removeFavoriteHandler = () => {
+    if (restaurantDetail) {
+      removeFavorite(restaurantDetail.id);
+      setIsFavorite(false);
     }
   };
 
@@ -108,9 +140,21 @@ const Detail = () => {
           >
             <BackArrowIcon />
           </Link>
-          <button className="back-button absolute top-10 right-7 h-[45px] w-[45px] z-20 bg-primary border-0 rounded-full text-white font-bold flex items-center justify-center">
-            <HeartIcon />
-          </button>
+          {isFavorite ? (
+            <button
+              className="back-button absolute top-10 right-7 h-[45px] w-[45px] z-20 bg-primary border-0 rounded-full text-white font-bold flex items-center justify-center"
+              onClick={removeFavoriteHandler}
+            >
+              <RemoveFavoriteIcon />
+            </button>
+          ) : (
+            <button
+              className="back-button absolute top-10 right-7 h-[45px] w-[45px] z-20 bg-primary border-0 rounded-full text-white font-bold flex items-center justify-center"
+              onClick={addFavoriteHandler}
+            >
+              <AddFavoriteIcon />
+            </button>
+          )}
           <div className="detail__subhead mt-24 mb-10 flex flex-col gap-3">
             <div className="detail__address flex items-center">
               <div className="text-fontPrimary w-[30px] mr-4">
@@ -176,7 +220,7 @@ const Detail = () => {
     );
   } else {
     return (
-      <div role="status" className='flex justify-center items-center'>
+      <div role="status" className="flex justify-center items-center">
         <SpinningWheel />
         <span className="sr-only">Loading...</span>
       </div>
